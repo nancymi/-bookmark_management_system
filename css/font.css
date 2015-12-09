@@ -1,0 +1,5 @@
+@font-face {
+  font-family: "OpenSansRegular";
+  src: url("font/OpenSans-Bold-webfont.eot");
+  src: local("OpenSansRegular"), url("font/Opensans.ttf") format("truetype"), url("font/OpenSans-Bold-webfont.svg") format("svg");
+}

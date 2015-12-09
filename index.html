@@ -3,17 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Bookmark</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/layout.css">
+	<link rel="stylesheet" type="text/css" href="css/base.css">
+  <link rel="stylesheet" type="text/css" href="css/font.css">
+  <link rel="stylesheet" type="text/css" href="css/module.css">
+  <link rel="stylesheet" href="css/buttons.css">
+  <link rel="stylesheet" type="text/css" href="css/lrtk.css">
 	<script type="text/javascript" src="libs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="libs/lodash.js"></script>
 	<script type="text/javascript" src="js/search.js"></script>
+  <script type="text/javascript" src="js/pagnation.js"></script>
 </head>
 <body>
-  <div class="search">
-  	<input id="keyword" type="text" style="font-size: 18px">
+  <div id="search">
+  	<input class="input" type="text" style="font-size: 18px">
+    <p id="search_sum" class="p"></p>
   </div>
   
-  <div class="content">
+  <div id="content">
+  </div>
+
+  <div id="operate">
+    <div id="add_bookmark">
+      <a class="button button-rounded button-plain button-small-caps button-border" href="">添加标签</a>
+    </div>
+    <div id="pagnation" class="pagnation"></div>
   </div>
 </body>
 </html>

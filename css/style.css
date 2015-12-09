@@ -1,39 +1,23 @@
-body {
-	font-family: "OpenSansRegular";
-	text-align: center;
-	margin-left: 3em;
-	margin-right: 3em;
-	font-size: 1.5em;
-}
-
-.search {
-	background-color: #F5F5F5;
-	height: 100px;
-}
-
-.search input {
+#search input {
 	width: 90%;
-	height: 40px;
-	margin: 30px;
 	font-family: "OpenSansRegular";
 }
 
-.content {
+#content {
 	font-family: "OpenSansRegular";
 }
 
-.bookmark {
+#bookmark {
 	padding: 0px;
 }
 
-.title {
+#title {
 	text-align: left;
-	position: relative;
 	top: 1em;
 	bottom: 1em;
 }
 
-.created {
+#created {
 	text-align: right;
 	font-style: oblique;
 	font-size: 0.7em;
@@ -42,10 +26,9 @@ body {
 
 .line {
 	border: 1px dashed #CCCCCC;	
+	clear:both;
 }
 
-@font-face {
-	font-family: "OpenSansRegular";
-	src: url("font/OpenSans-Bold-webfont.eot");
-	src: local("OpenSansRegular"), url("font/Opensans.ttf") format("truetype"), url("font/OpenSans-Bold-webfont.svg") format("svg");
+.p {
+	color: white;
 }
