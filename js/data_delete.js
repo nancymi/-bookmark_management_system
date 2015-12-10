@@ -9,7 +9,6 @@ function openDeleteDialog(obj) {
 
 function getBookmarkTitle() {
   var title = $(this).parent().parent().find(".bookmark_content").find(".title").text();
-  alert(title);
   if (title == null) {
     return "";
   } else {
