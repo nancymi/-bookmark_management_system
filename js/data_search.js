@@ -14,12 +14,14 @@ function downloadData() {
 	$.ajaxSettings.async = false;
 	$.getJSON(BOOKMARK_URL, function(data) {
 		bookmarks = data;
-		bookmarkHtmlList = _.chain(bookmarks).map(function(bookmark) {
-			return getBookmarkStr(bookmark.title, bookmark.created, bookmark.url);
-		});
 	});
 }
 
+function initializeHtmlData() {
+	bookmarkHtmlList = _.chain(bookmarks).map(function(bookmark) {
+			return getBookmarkStr(bookmark.title, bookmark.created, bookmark.url);
+		});
+}
 
 function runSearchEvent() {
 	bindInputEvent();

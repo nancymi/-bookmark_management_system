@@ -13,6 +13,7 @@ function initializeData() {
 }
 
 function initializeUI() {
+  initializeHtmlData();
   initializePage.call(window.bookmarkHtmlList);
   initializePagnation();
 }
