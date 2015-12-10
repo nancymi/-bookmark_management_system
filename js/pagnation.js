@@ -1,38 +1,118 @@
-var page_number;  
+var PRE_PAGE = '<button type="button" onclick="updatePageByButton(this.id)" class="button button-large button-plain button-border button-circle" id="page-pre"><-</i></button>';
 
-var pre_page = '<button class="button button-large button-plain button-border button-circle" id="page-pre"><-</i></button>';
-
-var next_page = '<button class="button button-large button-plain button-border button-circle" id="page-next">-></i></button>';
-
-var per_page;
+var NEXT_PAGE = '<button type="button" onclick="updatePageByButton(this.id)" class="button button-large button-plain button-border button-circle" id="page-next">-></i></button>';
 
 var PAGE_SIZE = 10;
 
-// var pagnation = $("#pagnation");
-//   $(document).on("keydown",function(event){
-//     switch(event.keyCode){
-//        case 37 : window.location.href = pagnation.find(".page-prev").attr("href");break;
-//        case 39 : window.location.href = pagnation.find(".page-next").attr("href");break
-//     }
-//   });
+var currentPage = 1;
 
-function runPagnation() {
-  var page_sum = Math.ceil(window.bookmarkOnFilterSum / PAGE_SIZE);
+function initializePagnation() {
+  loadPagnation(window.bookmarks.length);
+}
+
+function updatePagnation() {
+  loadPagnation(window.bookmarkOnFilters.length);
+}
+
+function loadPagnation(bookmarkSum) {
+  var page_sum = Math.ceil(bookmarkSum / PAGE_SIZE);
   if (page_sum == 1) {
-    $("#pagnation").html("");
+    clearPagnation();
   } else {
-    var pagnationHTML = "";
-    pagnationHTML += pre_page;
-    for (page_number = 1; page_number <= page_sum; page_number ++) {
-      pagnationHTML += 
-        ('<button class="button button-large button-plain button-border button-circle" id="page_' 
-          + page_number + '">' + page_number + '</i></button>');
-    }
-    pagnationHTML += next_page;
-    $("#pagnation").html(pagnationHTML);
+    var pageHTML = getPagnationHTML(page_sum);
+    setPagnation(pageHTML);
   }
 }
 
-function updatePage(bookmarkContent) {
+function clearPagnation() {
+  $("#pagnation").html("");
+}
 
+function setPagnation(content) {
+  $("#pagnation").html(content);
+}
+
+function getPagnationHTML(page_sum) {
+  var pagnationHTML = "";
+  pagnationHTML += PRE_PAGE;
+  for (var page_number = 1; page_number <= page_sum; page_number ++) {
+    pagnationHTML += 
+      ('<button type="button" onclick="updatePageByButton(this.id)" class="button button-large button-plain button-border button-circle" id="'
+       + page_number + '">' + page_number + '</i></button>');
+  }
+  pagnationHTML += NEXT_PAGE;
+  return pagnationHTML;
+}
+
+
+
+function initializePage() {
+  loadPage.call(this, 1);
+}
+
+function updatePageByFilter() {
+  loadPage.call(this, 1);
+}
+
+function updatePageByButton(page_id) {
+  if (isOnFilter()) {
+    loadPage.call(window.bookmarkOnFilterHtmlList, page_id);
+  } else {
+    loadPage.call(window.bookmarkHtmlList, page_id);
+  }
+}
+
+function isOnFilter() {
+  if (window.inputKeyword != "") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function loadPage(page_id) {
+  var current_page = getCurrentPage(page_id);
+  //alert(current_page);
+  window.currentPage = current_page;
+  var start = (window.currentPage-1) * PAGE_SIZE;
+  var end = start + PAGE_SIZE;
+  var pageHTML = this.slice(start, end);
+  setPageContent.call(pageHTML);
+}
+
+function getCurrentPage(page_id) {
+  if (page_id == null) {
+    return 1;
+  }
+    switch(page_id) {
+      case 'page-pre': {
+        if (window.currentPage == 1)
+          return window.currentPage;
+        else 
+          return window.currentPage-1;
+        break;
+      }
+      case 'page-next': {
+        if (isOnFilter()) {
+          return window.currentPage == window.bookmarkOnFilterHtmlList.length ? 
+            window.currentPage : window.currentPage+1;
+        } else {
+          return window.currentPage == window.bookmarkHtmlList.length ? 
+            window.currentPage : window.currentPage+1;
+        }
+          return window.currentPage+1;
+        break;
+      }
+      default: {
+        return parseInt(page_id);
+      }
+    }
+}
+
+function setPageContent() {
+  if (this instanceof Array) {
+    $("#content").html(this.join(""));
+  } else {
+    $("#content").html(this.value());
+  }
 }
