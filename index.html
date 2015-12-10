@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Bookmark</title>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="css/layout.css">
-	<link rel="stylesheet" type="text/css" href="css/base.css">
   <link rel="stylesheet" type="text/css" href="css/font.css">
   <link rel="stylesheet" type="text/css" href="css/module.css">
   <link rel="stylesheet" href="css/buttons.css">
 	<script type="text/javascript" src="libs/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="libs/lodash.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
-	<script type="text/javascript" src="js/data_CRUD.js"></script>
+	<script type="text/javascript" src="js/data_search.js"></script>
+  <script type="text/javascript" src="js/data_add.js"></script>
+  <script type="text/javascript" src="js/data_delete.js"></script>
   <script type="text/javascript" src="js/pagnation.js"></script>
 </head>
 <body>
@@ -25,9 +25,26 @@
 
   <div id="operate">
     <div id="add_bookmark">
-      <a class="button button-rounded button-plain button-small-caps button-border" href="">添加标签</a>
+      <a id="add_button" class="button button-rounded button-plain button-small-caps button-border" onclick="openDialog()">添加标签</a>
     </div>
     <div id="pagnation" class="pagnation"></div>
+    <div class="overlay box-add-bookmark">
+      <div class="section">
+        <div class="flow-layout dialog-input">
+          <p>书签名称</p>
+          <input id="bookmark-title" class="input" type="text" style="font-size: 18px">
+        </div>
+        <div class="flow-layout dialog-input">
+          <p>书签地址</p>
+          <input id="bookmark-url" class="input" type="text" style="font-size: 18px">
+        </div>
+        <div class="flow-layout dialog-button">
+          <a id="add-cancel-button" class="button button-rounded button-plain button-small-caps button-border" onclick="cancelAdd()">取消</a>
+          <a id="add-confirm-button" class="button button-rounded button-plain button-small-caps button-border" onclick="confirmAdd()">确定</a>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </body>
 </html>

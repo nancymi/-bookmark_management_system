@@ -1,3 +1,10 @@
+body {
+  font-family: "OpenSansRegular";
+  text-align: center;
+  font-size: 1.5em;
+  margin: 0px;
+}
+
 #add_bookmark a {
   float: left;
   margin-left: 100px;
@@ -19,4 +26,92 @@
   float: left;
   margin-top: 2%;
   margin-bottom: 2%;
+}
+
+#search input {
+  width: 90%;
+  font-family: "OpenSansRegular";
+}
+
+#content {
+  font-family: "OpenSansRegular";
+}
+
+#bookmark {
+  padding: 0px;
+}
+
+.title {
+  text-align: left;
+  float: left;
+}
+
+.bookmark_content a {
+  display: block;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.created {
+  text-align: right;
+  clear: left;
+  font-style: oblique;
+  font-size: 0.7em;
+  color: #8C8C8C;
+}
+
+.line {
+  border: 1px dashed #CCCCCC; 
+  clear:both;
+}
+
+.p {
+  color: white;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+}
+.box-add-bookmark .section {
+    margin: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    height: 300px;
+    background: #3F51B5;
+    z-index: 10;
+}
+
+.flow-layout p {
+  float: left;
+  width: 30%;
+  color: white;
+}
+
+.flow-layout input {
+  float: left;
+  width: 50%;
+  margin: 7%;
+}
+
+.flow-layout a {
+  float: left;
+  margin: 10%;
+}
+
+.dialog-input {
+  height: 30%;
+}
+
+.dialog-button {
+  height: 40%;
 }
