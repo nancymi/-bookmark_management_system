@@ -19,6 +19,10 @@ function initializeUI() {
 
 function runDynamicEvent() {
   runSearchEvent();
-  //TODO runAddEvent();
   //TODO runDeleteEvent();
 }
+
+function runAddEvent() {
+  openAddDialog();
+}
+

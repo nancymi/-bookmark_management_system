@@ -15,7 +15,7 @@ function downloadData() {
 	$.getJSON(BOOKMARK_URL, function(data) {
 		bookmarks = data;
 		bookmarkHtmlList = _.chain(bookmarks).map(function(bookmark) {
-			return getBookmarkStr(bookmark.title, bookmark.created);
+			return getBookmarkStr(bookmark.title, bookmark.created, bookmark.url);
 		});
 	});
 }
@@ -55,7 +55,7 @@ function loadFilterData() {
 	bookmarkOnFilterHtmlList = bookmarkOnFilters.map(function(bookmarkOnFilter) {
 		var highlightBookmarkOnFilter = bookmarkOnFilter.title.replace(
 						keywordRE, '<span style="background-color:#F24A98">$&</span>');
-		return getBookmarkStr(highlightBookmarkOnFilter, bookmarkOnFilter.created);
+		return getBookmarkStr(highlightBookmarkOnFilter, bookmarkOnFilter.created, bookmarkOnFilter.url);
 	});
 }
 
@@ -99,7 +99,7 @@ function getBookmarkStr(title, created, url) {
 	} else {
 		return '<div id="bookmark">' +
 				'<div class="bookmark_content">' + 
-	        '<a class="title" href="' + bookmark_url + '">' + title + '</a>' +
+	        '<a class="title" target="_blank" href="' + bookmark_url + '">' + title + '</a>' +
 	        '<p class="created">Created @ ' + getLocalTime(created) +'</p>' +
 	        '</div>' +
 	        '<div class="delete_button">' + 

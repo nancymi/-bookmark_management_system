@@ -63,10 +63,12 @@ function updatePageByButton(page_id) {
 }
 
 function isOnFilter() {
-  if (window.inputKeyword != "") {
-    return true;
-  } else {
+  if (window.inputKeyword == null) {
     return false;
+  } else if (window.inputKeyword == "") {
+    return false;
+  } else {
+    return true;
   }
 }
 
